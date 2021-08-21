@@ -6,8 +6,11 @@ services:
     restart: always
     volumes:
       - db:/var/lib/postgresql/data
-    env_file:
-      - db.env
+    environment:
+      - POSTGRES_PASSWORD=
+      - POSTGRES_DB=nextcloud
+      - POSTGRES_USER=nextcloud
+
 
   redis:
     image: redis:alpine
@@ -19,9 +22,9 @@ services:
     volumes:
       - nextcloud:/var/www/html
     environment:
-      - VIRTUAL_HOST=
-      - LETSENCRYPT_HOST=
-      - LETSENCRYPT_EMAIL=
+      - VIRTUAL_HOST=gortazar.duckdns.org
+      - LETSENCRYPT_HOST=gortazar.duckdns.org
+      - LETSENCRYPT_EMAIL=patxi.gortazar@gmail.com
       - POSTGRES_HOST=db
       - REDIS_HOST=redis
     env_file:
