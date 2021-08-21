@@ -27,8 +27,6 @@ services:
       - LETSENCRYPT_EMAIL=patxi.gortazar@gmail.com
       - POSTGRES_HOST=db
       - REDIS_HOST=redis
-    env_file:
-      - db.env
     depends_on:
       - db
       - redis
